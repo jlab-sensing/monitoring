@@ -1,6 +1,7 @@
 services:
   cadvisor:
     image: gcr.io/cadvisor/cadvisor:v0.45.0
+    restart: always
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run:rw
@@ -9,6 +10,7 @@ services:
 
   prometheus:
     image: bitnami/prometheus:latest
+    restart: always
     volumes:
       - ./prometheus/:/etc/prometheus/
       - prometheus-data:/prometheus
@@ -23,6 +25,7 @@ services:
 
   grafana:
     image: grafana/grafana:4.6.2
+    restart: always
     volumes:
       - grafana-data:/var/lib/grafana
     depends_on:
