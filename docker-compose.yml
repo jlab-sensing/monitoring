@@ -6,10 +6,6 @@ services:
       - /var/run:/var/run:rw
       - /sys:/sys:ro
       - /var/lib/docker/:/var/lib/docker:ro
-    expose:
-      - 8080
-    ports:
-      - "8005:8080"
 
   prometheus:
     image: bitnami/prometheus:latest
@@ -24,10 +20,18 @@ services:
       - '--storage.tsdb.retention=200h'
     depends_on:
       - cadvisor
+
+  grafana:
+    image: grafana/grafana:4.6.2
+    volumes:
+      - grafana-data:/var/lib/grafana
+    depends_on:
+      - prometheus
     expose:
-      - 9090
+      - 3000
     ports:
-      - "9090:9090"
+      - "3000:3000"
 
 volumes:
   prometheus-data:
+  grafana-data:
