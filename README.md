@@ -16,7 +16,7 @@ docker compose up -d
 
 3. Add a new data using these settings
 
-![Add data source](images/add_data_source.pong)
+![Add data source](images/add_data_source.png)
 
 4. Import new dashboard with id of `193`. Set the data source to `Prometheus`.
 
